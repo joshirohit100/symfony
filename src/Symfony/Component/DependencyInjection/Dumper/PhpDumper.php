@@ -705,7 +705,7 @@ EOF;
         }
 
         if ('request' !== $id) {
-            trigger_error('Synchronized services were deprecated in version 2.7 and won\'t work anymore in 3.0.', E_USER_DEPRECATED);
+            @trigger_error('Synchronized services were deprecated in version 2.7 and won\'t work anymore in 3.0.', E_USER_DEPRECATED);
         }
 
         $code = '';
@@ -904,9 +904,6 @@ EOF;
         \$this->services =
         \$this->scopedServices =
         \$this->scopeStacks = array();
-
-        \$this->set('service_container', \$this);
-
 EOF;
 
         $code .= "\n";
@@ -1304,11 +1301,6 @@ EOF;
             foreach ($value->getArguments() as $argument) {
                 $arguments[] = $this->dumpValue($argument);
             }
-            $class = $this->dumpValue($value->getClass());
-
-            if (false !== strpos($class, '$')) {
-                throw new RuntimeException('Cannot dump definitions which have a variable class name.');
-            }
 
             if (null !== $value->getFactory()) {
                 $factory = $value->getFactory();
@@ -1344,6 +1336,15 @@ EOF;
                 } else {
                     throw new RuntimeException('Cannot dump definitions which have factory method without factory service or factory class.');
                 }
+            }
+
+            $class = $value->getClass();
+            if (null === $class) {
+                throw new RuntimeException('Cannot dump definitions which have no class nor factory.');
+            }
+            $class = $this->dumpValue($class);
+            if (false !== strpos($class, '$')) {
+                throw new RuntimeException('Cannot dump definitions which have a variable class name.');
             }
 
             return sprintf('new \\%s(%s)', substr(str_replace('\\\\', '\\', $class), 1, -1), implode(', ', $arguments));
@@ -1417,7 +1418,7 @@ EOF;
      */
     public function addExpressionLanguageProvider(ExpressionFunctionProviderInterface $provider)
     {
-        trigger_error('The '.__METHOD__.' method is deprecated since version 2.6.2 and will be removed in 3.0. Use the Symfony\Component\DependencyInjection\ContainerBuilder::addExpressionLanguageProvider method instead.', E_USER_DEPRECATED);
+        @trigger_error('The '.__METHOD__.' method is deprecated since version 2.6.2 and will be removed in 3.0. Use the Symfony\Component\DependencyInjection\ContainerBuilder::addExpressionLanguageProvider method instead.', E_USER_DEPRECATED);
 
         $this->expressionLanguageProviders[] = $provider;
     }
