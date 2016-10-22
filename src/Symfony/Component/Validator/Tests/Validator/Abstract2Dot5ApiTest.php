@@ -29,7 +29,6 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 /**
  * Verifies that a validator satisfies the API of Symfony 2.5+.
  *
- * @since  2.5
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
@@ -41,6 +40,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
     /**
      * @param MetadataFactoryInterface $metadataFactory
+     * @param array                    $objectInitializers
      *
      * @return ValidatorInterface
      */
@@ -108,7 +108,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
         $sequence = new GroupSequence(array('Group 1', 'Group 2', 'Group 3'));
         $violations = $this->validator->validate($entity, new Valid(), $sequence);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message 1', $violations[0]->getMessage());
     }
@@ -138,7 +138,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
         $sequence = new GroupSequence(array('Group 1', 'Entity'));
         $violations = $this->validator->validate($entity, new Valid(), $sequence);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Reference violation 1', $violations[0]->getMessage());
     }
@@ -157,7 +157,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
                 ->validate($value->reference, new Valid(), 'Group')
             ;
 
-            /** @var ConstraintViolationInterface[] $violations */
+            /* @var ConstraintViolationInterface[] $violations */
             $test->assertCount(1, $violations);
             $test->assertSame('Message value', $violations[0]->getMessage());
             $test->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -197,7 +197,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $test->assertSame('Separate violation', $violations[0]->getMessage());
     }
@@ -254,7 +254,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -318,7 +318,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -357,7 +357,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($traversable, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -389,7 +389,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($traversable, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -414,7 +414,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($traversable, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -452,7 +452,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -480,7 +480,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -508,7 +508,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validate($entity, new Valid(), 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -529,7 +529,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -543,6 +543,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
     /**
      * @expectedException \Symfony\Component\Validator\Exception\UnsupportedMetadataException
+     * @group legacy
      */
     public function testMetadataMustImplementClassMetadataInterface()
     {
@@ -560,6 +561,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
     /**
      * @expectedException \Symfony\Component\Validator\Exception\UnsupportedMetadataException
+     * @group legacy
      */
     public function testReferenceMetadataMustImplementClassMetadataInterface()
     {
@@ -611,7 +613,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity, new Valid(), array('Group 1', 'Group 2'));
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -630,7 +632,7 @@ abstract class Abstract2Dot5ApiTest extends AbstractValidatorTest
 
         $violations = $this->validator->validate($entity, new Valid(), array('Group 1', 'Group 2'));
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 

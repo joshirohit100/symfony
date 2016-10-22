@@ -22,6 +22,18 @@ class IntlDateFormatterTest extends AbstractIntlDateFormatterTest
         $this->assertEquals('y-M-d', $formatter->getPattern());
     }
 
+    public function testConstructorWithoutLocale()
+    {
+        $formatter = new IntlDateFormatter(null, IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'UTC', IntlDateFormatter::GREGORIAN, 'y-M-d');
+        $this->assertEquals('y-M-d', $formatter->getPattern());
+    }
+
+    public function testConstructorWithoutCalendar()
+    {
+        $formatter = new IntlDateFormatter('en', IntlDateFormatter::MEDIUM, IntlDateFormatter::SHORT, 'UTC', null, 'y-M-d');
+        $this->assertEquals('y-M-d', $formatter->getPattern());
+    }
+
     /**
      * @expectedException \Symfony\Component\Intl\Exception\MethodArgumentValueNotImplementedException
      */

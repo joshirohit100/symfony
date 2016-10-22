@@ -24,8 +24,6 @@ use Symfony\Component\ExpressionLanguage\Expression;
  *
  * @author Fabien Potencier <fabien@symfony.com>
  * @author Martin Hasoň <martin.hason@gmail.com>
- *
- * @api
  */
 class XmlDumper extends Dumper
 {
@@ -40,8 +38,6 @@ class XmlDumper extends Dumper
      * @param array $options An array of options
      *
      * @return string An xml string representing of the service container
-     *
-     * @api
      */
     public function dump(array $options = array())
     {
@@ -114,8 +110,12 @@ class XmlDumper extends Dumper
         if (null !== $id) {
             $service->setAttribute('id', $id);
         }
-        if ($definition->getClass()) {
-            $service->setAttribute('class', $definition->getClass());
+        if ($class = $definition->getClass()) {
+            if ('\\' === substr($class, 0, 1)) {
+                $class = substr($class, 1);
+            }
+
+            $service->setAttribute('class', $class);
         }
         if ($definition->getFactoryMethod(false)) {
             $service->setAttribute('factory-method', $definition->getFactoryMethod(false));
@@ -262,7 +262,7 @@ class XmlDumper extends Dumper
      * @param \DOMElement $parent
      * @param string      $keyAttribute
      */
-    private function convertParameters($parameters, $type, \DOMElement $parent, $keyAttribute = 'key')
+    private function convertParameters(array $parameters, $type, \DOMElement $parent, $keyAttribute = 'key')
     {
         $withKeys = array_keys($parameters) !== range(0, count($parameters) - 1);
         foreach ($parameters as $key => $value) {
@@ -311,7 +311,7 @@ class XmlDumper extends Dumper
      *
      * @return array
      */
-    private function escape($arguments)
+    private function escape(array $arguments)
     {
         $args = array();
         foreach ($arguments as $k => $v) {

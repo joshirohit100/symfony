@@ -140,7 +140,6 @@ EOF
             return;
         }
         if ($type === 'functions' || $type === 'filters') {
-            $args = array();
             $cb = $entity->getCallable();
             if (is_null($cb)) {
                 return;
@@ -150,7 +149,7 @@ EOF
                     return;
                 }
                 $refl = new \ReflectionMethod($cb[0], $cb[1]);
-            } elseif (is_object($cb) && is_callable($cb)) {
+            } elseif (is_object($cb) && method_exists($cb, '__invoke')) {
                 $refl = new \ReflectionMethod($cb, '__invoke');
             } elseif (function_exists($cb)) {
                 $refl = new \ReflectionFunction($cb);

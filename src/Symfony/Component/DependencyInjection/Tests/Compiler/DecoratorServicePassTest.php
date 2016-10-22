@@ -1,5 +1,14 @@
 <?php
 
+/*
+ * This file is part of the Symfony package.
+ *
+ * (c) Fabien Potencier <fabien@symfony.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Symfony\Component\DependencyInjection\Tests\Compiler;
 
 use Symfony\Component\DependencyInjection\Alias;
@@ -71,6 +80,24 @@ class DecoratorServicePassTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($container->getAlias('foo.extended.inner')->isPublic());
 
         $this->assertNull($fooExtendedDefinition->getDecoratedService());
+    }
+
+    public function testProcessMovesTagsFromDecoratedDefinitionToDecoratingDefinition()
+    {
+        $container = new ContainerBuilder();
+        $container
+            ->register('foo')
+            ->setTags(array('name' => 'bar'))
+        ;
+        $container
+            ->register('baz')
+            ->setDecoratedService('foo')
+        ;
+
+        $this->process($container);
+
+        $this->assertEmpty($container->getDefinition('baz.inner')->getTags());
+        $this->assertEquals(array('name' => 'bar'), $container->getDefinition('baz')->getTags());
     }
 
     protected function process(ContainerBuilder $container)

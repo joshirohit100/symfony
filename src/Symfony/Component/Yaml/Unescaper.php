@@ -24,6 +24,7 @@ class Unescaper
      * must be converted to that encoding.
      *
      * @deprecated since version 2.5, to be removed in 3.0
+     *
      * @internal
      */
     const ENCODING = 'UTF-8';
@@ -36,9 +37,9 @@ class Unescaper
     /**
      * Unescapes a single quoted string.
      *
-     * @param string $value A single quoted string.
+     * @param string $value A single quoted string
      *
-     * @return string The unescaped string.
+     * @return string The unescaped string
      */
     public function unescapeSingleQuotedString($value)
     {
@@ -48,9 +49,9 @@ class Unescaper
     /**
      * Unescapes a double quoted string.
      *
-     * @param string $value A double quoted string.
+     * @param string $value A double quoted string
      *
-     * @return string The unescaped string.
+     * @return string The unescaped string
      */
     public function unescapeDoubleQuotedString($value)
     {

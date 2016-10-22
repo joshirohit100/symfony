@@ -180,7 +180,6 @@ interface ValidatorBuilderInterface
      *
      * @see Validation::API_VERSION_2_5
      * @see Validation::API_VERSION_2_5_BC
-     *
      * @deprecated since version 2.7, to be removed in 3.0.
      */
     public function setApiVersion($apiVersion);
@@ -188,7 +187,7 @@ interface ValidatorBuilderInterface
     /**
      * Builds and returns a new validator object.
      *
-     * @return ValidatorInterface The built validator.
+     * @return ValidatorInterface The built validator
      */
     public function getValidator();
 }

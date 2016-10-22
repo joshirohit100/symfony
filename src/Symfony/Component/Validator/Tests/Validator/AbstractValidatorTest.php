@@ -23,7 +23,6 @@ use Symfony\Component\Validator\Tests\Fixtures\GroupSequenceProviderEntity;
 use Symfony\Component\Validator\Tests\Fixtures\Reference;
 
 /**
- * @since  2.5
  * @author Bernhard Schussek <bschussek@gmail.com>
  */
 abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
@@ -92,7 +91,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate('Bernhard', $constraint, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -129,7 +128,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -169,7 +168,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -209,7 +208,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -247,7 +246,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($array, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -285,7 +284,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($array, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -323,7 +322,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($traversable, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -363,7 +362,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($traversable, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -402,7 +401,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -444,7 +443,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -486,7 +485,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -507,7 +506,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -551,7 +550,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -591,7 +590,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -619,7 +618,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -639,7 +638,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -652,7 +651,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -665,7 +664,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -696,7 +695,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -725,7 +724,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(0, $violations);
     }
 
@@ -775,7 +774,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -824,7 +823,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validateProperty($entity, 'firstName', 'Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -853,7 +852,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * https://github.com/symfony/symfony/issues/11604
+     * https://github.com/symfony/symfony/issues/11604.
      */
     public function testValidatePropertyWithoutConstraints()
     {
@@ -904,7 +903,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
             'Group'
         );
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -955,7 +954,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
             'Group'
         );
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Message value', $violations[0]->getMessage());
         $this->assertSame('Message %param%', $violations[0]->getMessageTemplate());
@@ -984,7 +983,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * https://github.com/symfony/symfony/issues/11604
+     * https://github.com/symfony/symfony/issues/11604.
      */
     public function testValidatePropertyValueWithoutConstraints()
     {
@@ -1010,7 +1009,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -1030,7 +1029,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity);
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(2, $violations);
     }
 
@@ -1053,7 +1052,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Group 2');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
     }
 
@@ -1076,7 +1075,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, array('Group 1', 'Group 2'));
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(2, $violations);
     }
 
@@ -1109,7 +1108,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Default');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in Group 2', $violations[0]->getMessage());
     }
@@ -1143,7 +1142,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Default');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in Group 2', $violations[0]->getMessage());
     }
@@ -1175,7 +1174,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Default');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in Default group', $violations[0]->getMessage());
     }
@@ -1205,7 +1204,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Other Group');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in other group', $violations[0]->getMessage());
     }
@@ -1241,7 +1240,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Default');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in Group 2', $violations[0]->getMessage());
     }
@@ -1277,7 +1276,7 @@ abstract class AbstractValidatorTest extends \PHPUnit_Framework_TestCase
 
         $violations = $this->validate($entity, null, 'Default');
 
-        /** @var ConstraintViolationInterface[] $violations */
+        /* @var ConstraintViolationInterface[] $violations */
         $this->assertCount(1, $violations);
         $this->assertSame('Violation in Group 2', $violations[0]->getMessage());
     }

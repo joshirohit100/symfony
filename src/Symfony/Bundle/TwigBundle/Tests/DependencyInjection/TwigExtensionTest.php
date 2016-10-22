@@ -147,7 +147,7 @@ class TwigExtensionTest extends TestCase
         $this->compileContainer($container);
 
         $options = $container->getDefinition('twig')->getArgument(1);
-        $this->assertEquals('filename', $options['autoescape']);
+        $this->assertEquals('name', $options['autoescape']);
     }
 
     public function testGlobalsWithDifferentTypesAndValues()
@@ -190,10 +190,8 @@ class TwigExtensionTest extends TestCase
         $def = $container->getDefinition('twig.loader.filesystem');
         $paths = array();
         foreach ($def->getMethodCalls() as $call) {
-            if ('addPath' === $call[0]) {
-                if (false === strpos($call[1][0], 'Form')) {
-                    $paths[] = $call[1];
-                }
+            if ('addPath' === $call[0] && false === strpos($call[1][0], 'Form')) {
+                $paths[] = $call[1];
             }
         }
 
